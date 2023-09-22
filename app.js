@@ -23,8 +23,32 @@ app.get("/", (req, res) => {
 app.post("/login", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
+  const query =
+    "SELECT title FROM user where username = '" +
+    username +
+    "' and password = '" +
+    password +
+    "'";
 
-  res.send(`Username: ${username}, Password: ${password}`);
+  //res.send(`Username: ${username}, Password: ${password}`);
+  console.log("username: " + username);
+  console.log("password: " + password);
+  console.log("query: " + query);
+
+  db.get(query, function (err, row) {
+    if (err) {
+      console.log("ERROR", err);
+      res.redirect("/index.html#error");
+    } else if (!row) {
+      res.redirect("/index.html#unauthorized");
+    } else {
+      res.send(
+        "Hello <b>" +
+          row.title +
+          '!</b><br /> This file contains all your secret data: <br /><br /> SECRETS <br /><br /> MORE SECRETS <br /><br /> <a href="/index.html">Go back to login</a>'
+      );
+    }
+  });
 });
 
 const port = process.env.PORT || 3000;
