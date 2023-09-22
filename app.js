@@ -12,7 +12,7 @@ const db = new sqlite3.Database(":memory:");
 db.serialize(function () {
   db.run("CREATE TABLE user (username TEXT, password TEXT, title TEXT)");
   db.run(
-    "INSERT INTO user VALUES ('privilegedUser', 'privilegedUser1', 'Administrator')"
+    "INSERT INTO user VALUES ('brownStudent', 'colorBlind2', 'The Chosen One')"
   );
 });
 
@@ -45,7 +45,7 @@ app.post("/login", (req, res) => {
       res.send(
         "Hello <b>" +
           row.title +
-          '!</b><br /> This file contains all your secret data: <br /><br /> SECRETS <br /><br /> MORE SECRETS <br /><br /> <a href="/index.html">Go back to login</a>'
+          '!</b><br /> This file contains broken dreams and promises...: <br /><br /> Treasure Stuff... <br /><br /> Where your dreams are hidden <br /><br /> <a href="/index.html">Go back to login</a>'
       );
     }
   });
