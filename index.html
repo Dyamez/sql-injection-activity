@@ -22,16 +22,16 @@
         /><br /><br />
 
         <input type="submit" value="Login" />
-        <script>
-          if (document.location.hash === "#unauthorized") {
-            document.write(
-              '<div class="unauthorized">Invalid Username or Password</div>'
-            );
-          } else if (document.location.hash === "#error") {
-            document.write(`<div class="error">An error has occured</div>`);
-          }
-        </script>
       </div>
+      <script>
+        if (document.location.hash === "#unauthorized") {
+          document.write(
+            '<div class="unauthorized">Invalid Username or Password</div>'
+          );
+        } else if (document.location.hash === "#error") {
+          document.write(`<div class="error">An error has occured</div>`);
+        }
+      </script>
     </form>
   </body>
 </html>
